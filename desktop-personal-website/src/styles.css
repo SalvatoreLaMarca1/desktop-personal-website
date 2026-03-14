@@ -1,0 +1,16 @@
+
+.main-container {
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    height: 100vh;
+}
+
+.taskbar {
+    background-color: gray;
+    
+}
+
+.desktop-window {
+    background-color: teal;
+
+}
