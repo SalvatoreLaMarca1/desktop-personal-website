@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AppIcon from "./AppIcon"
+import Email from "./Email";
 
 
 function Desktop() {
@@ -13,6 +14,7 @@ function Desktop() {
                 selected={selectedIcon === "Discord"}
                 onSelect={() => setSelectedIcon("Discord")}
                 icon="src/assets/app-icons/discord.png"
+                onDoubleClick={() => me()}
             />
 
             <AppIcon 
@@ -21,8 +23,14 @@ function Desktop() {
                 onSelect={() => setSelectedIcon("Email")}
                 icon="src/assets/app-icons/email.jpg"
             />
+
+            <Email></Email>
         </div>
     )
+}
+
+function me () {
+    console.log("Testing")
 }
 
 

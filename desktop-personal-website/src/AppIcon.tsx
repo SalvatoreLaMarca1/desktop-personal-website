@@ -7,16 +7,17 @@ type AppIconProps = {
     icon?: string;
     selected: boolean;
     onSelect: () => void;
+    onDoubleClick?: () => void;
 }
 
 
-function AppIcon({name, icon, selected, onSelect}: AppIconProps) {
+function AppIcon({name, icon, selected, onSelect, onDoubleClick}: AppIconProps) {
 
     const nodeRef = useRef(null)
 
     return (
         <Draggable nodeRef = {nodeRef}>
-            <div ref={nodeRef} onClick={(e) => {
+            <div onDoubleClick={onDoubleClick} ref={nodeRef} onClick={(e) => {
                 e.stopPropagation();
                 onSelect()
                 console.log(selected, onSelect)
