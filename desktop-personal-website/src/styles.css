@@ -71,4 +71,54 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    text-align: left;
+    padding: 10px;
+}
+
+.email-cluster {
+    display: flex;
+    gap: 50px;
+}
+
+.input-style {
+    background-color: pink;
+    
+}
+
+.app-window {
+    /* width: 500px;
+    height: 400px; */
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.app-header {
+    background-color: gray;
+    display: flex;
+    height: 20px;
+    justify-content: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    border-radius: 15px 15px 0 0 ;
+    cursor: grab;
+}
+
+.app-header {
+    cursor: grabbing;
+}
+
+.app-window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-right: 2px;
+}
+
+.app-window-button:active {
+    opacity: 50%;
 }

@@ -7,7 +7,7 @@ type AppIconProps = {
     icon?: string;
     selected: boolean;
     onSelect: () => void;
-    onDoubleClick?: () => void;
+    onDoubleClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 
@@ -16,7 +16,7 @@ function AppIcon({name, icon, selected, onSelect, onDoubleClick}: AppIconProps) 
     const nodeRef = useRef(null)
 
     return (
-        <Draggable nodeRef = {nodeRef}>
+        <Draggable nodeRef = {nodeRef} bounds="parent">
             <div onDoubleClick={onDoubleClick} ref={nodeRef} onClick={(e) => {
                 e.stopPropagation();
                 onSelect()
