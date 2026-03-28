@@ -67,19 +67,25 @@ function Desktop() {
                     e.stopPropagation(); // <- prevents the desktop onClick
                     openWindow("email");
                 }}
+                
             />
 
 
-            {windows.map(win => (
-                <AppWindow
-                    key={win.id + "-a"}
-                    zIndex={win.zIndex}
-                    onClick={() => bringToFront(win.id)}
-                    onClose={() => closeWindow(win.id)}
-                >
-                    {win.id.startsWith("email") && <Email/>}
-                </AppWindow>
-                ) 
+            {windows.map(win => {
+                const isEmail = win.id.startsWith("email");
+                    return (
+                        <AppWindow
+                            key={win.id + "-a"}
+                            zIndex={win.zIndex}
+                            onClick={() => bringToFront(win.id)}
+                            onClose={() => closeWindow(win.id)}
+                            width={isEmail ? 600 : undefined}
+                            height={isEmail ? 400 : undefined}
+                        >
+                            {win.id.startsWith("email") && <Email/>}
+                        </AppWindow>
+                    )
+                }
             )}
 
             

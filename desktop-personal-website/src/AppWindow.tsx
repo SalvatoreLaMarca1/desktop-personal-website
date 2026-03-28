@@ -17,7 +17,7 @@ function AppWindow({children, onClick, onClose, zIndex = 0, width = 500, height 
     const nodeRef = useRef(null)
 
     return (
-        <Draggable onMouseDown={onClick}  handle=".app-header" bounds="parent" nodeRef={nodeRef}>
+        <Draggable onMouseDown={onClick}  handle=".app-header" nodeRef={nodeRef}>
             <div ref = {nodeRef} className="app-window"
                 
                 style={{
@@ -26,9 +26,9 @@ function AppWindow({children, onClick, onClose, zIndex = 0, width = 500, height 
                     zIndex: zIndex
                 }}>
                 <div className="app-header">
-                    <button onClick={onClose} style={{backgroundColor: "red"}} className="app-window-button"></button>
-                    <button style={{backgroundColor: "yellow"}}  className="app-window-button"></button>
-                    <button style={{backgroundColor: "green"}}  className="app-window-button"></button>
+                    <button onClick={onClose} className="app-window-button close-button"></button>
+                    <button className="app-window-button min-button"></button>
+                    <button className="app-window-button max-button"></button>
                 </div>
 
                 {children}
