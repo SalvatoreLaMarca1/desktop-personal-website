@@ -2,20 +2,24 @@ import { useState } from "react";
 import AppIcon from "./AppIcon"
 import Email from "./Email";
 import AppWindow from "./AppWindow";
+import Login from "./Login";
 
 type WindowType = {
     id: string;
     zIndex: number;
 }
 
+type desktopProps = {
+    windows: WindowType[];
+    setWindows: React.Dispatch<React.SetStateAction<WindowType[]>>;
+    topZ: number;
+    setTopZ: React.Dispatch<React.SetStateAction<number>>;
+}
 
-function Desktop() {
+
+function Desktop({ windows, setWindows, topZ, setTopZ }: desktopProps) {
 
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
-
-    const [windows, setWindows] = useState<WindowType[]>([])
-
-    const [topZ, setTopZ] = useState(0);
 
     const bringToFront = (id: string) => {
         setTopZ(prevTop => {
@@ -32,9 +36,10 @@ function Desktop() {
 
     const openWindow = (id: string) => {
         setWindows(prev => {
-            // prevent opening the same exact window id twice instantly
-            const lastWindow = prev[prev.length - 1];
-            if(lastWindow && lastWindow.id.startsWith(id)) return prev;
+            // check if any window of this app already exists
+            const exists = prev.some(win => win.id.startsWith(id));
+            if (exists) return prev;
+    
             const newTop = topZ + 1;
             setTopZ(newTop);
             return [...prev, { id: id + "-" + newTop, zIndex: newTop }];

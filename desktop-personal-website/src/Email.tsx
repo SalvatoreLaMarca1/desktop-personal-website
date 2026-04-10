@@ -2,11 +2,13 @@ import { useState } from "react"
 
 function Email() {
     const [subject, setSubject] = useState("")
-    const [fromEmail, setFromEmail] = useState("")
     const [message, setMessage] = useState("")
 
 
     function sendEmail() {
+
+        if(message === "") return
+        
         // sending to me
         const recipient = "paslamarca@gmail.com"
 
@@ -37,7 +39,7 @@ function Email() {
                 </div> */}
                 
                 <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="input-message" ></textarea>
-                <button onClick={sendEmail}>Send Email</button>
+                <button className="send-email-button" onClick={sendEmail}><i style={{fontSize: "20px"}} className="bi bi-send-fill"></i></button>
             </div>
     )
 }

@@ -1,4 +1,4 @@
-import { Children, useRef } from "react"
+import { useRef } from "react"
 import Draggable from "react-draggable"
 
 type AppWindowProps = {
@@ -26,9 +26,9 @@ function AppWindow({children, onClick, onClose, zIndex = 0, width = 500, height 
                     zIndex: zIndex
                 }}>
                 <div className="app-header">
-                    <button onClick={onClose} className="app-window-button close-button"></button>
-                    <button className="app-window-button min-button"></button>
-                    <button className="app-window-button max-button"></button>
+                    <button onClick={onClose} className="app-window-button close-button three-button"></button>
+                    <button className="app-window-button min-button three-button"></button>
+                    <button className="app-window-button max-button three-button"></button>
                 </div>
 
                 {children}
