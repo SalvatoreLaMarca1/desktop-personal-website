@@ -2,7 +2,7 @@ import { useState } from "react";
 import AppIcon from "./AppIcon"
 import Email from "./Email";
 import AppWindow from "./AppWindow";
-import Login from "./Login";
+
 
 type WindowType = {
     id: string;
@@ -14,10 +14,11 @@ type desktopProps = {
     setWindows: React.Dispatch<React.SetStateAction<WindowType[]>>;
     topZ: number;
     setTopZ: React.Dispatch<React.SetStateAction<number>>;
+    
 }
 
 
-function Desktop({ windows, setWindows, topZ, setTopZ }: desktopProps) {
+function Desktop({ windows, setWindows, topZ, setTopZ}: desktopProps) {
 
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
 

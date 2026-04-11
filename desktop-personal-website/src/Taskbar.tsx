@@ -8,9 +8,10 @@ type WindowType = {
 
 type Props = {
     windows: WindowType[];
+    setShowLoginPage: (val: boolean) => void;
 }
 
-function Taskbar({ windows }: Props) {
+function Taskbar({ windows, setShowLoginPage }: Props) {
 
     const apps = Array.from(
         new Set(windows.map(w => w.id.split("-")[0]))
@@ -24,18 +25,22 @@ function Taskbar({ windows }: Props) {
 
     const [showOptions, setShowOptions] = useState(false);
 
-    function showOptionsBox() {
-        setShowOptions(!showOptions)
-    }
 
     return (
 
         <div className='hold-taskbar'>
-            <div style={showOptions ? {display: 'flex'} : {display: 'none'}} className='taskbar-options'> 
-            </div>
+            {/* <div style={showOptions ? {display: 'flex'} : {display: 'none'}} className='taskbar-options'> 
+            </div> */}
+
+            {showOptions ? 
+                <div className='taskbar-options'>
+                    <button onClick={() => setShowLoginPage(true)}>Log out</button>
+                </div> : 
+                <></>
+            }
 
             <div className="taskbar">
-                <button onClick={showOptionsBox} className='start-menu'> Start</button>
+                <button onClick={() => setShowOptions(!showOptions)} className='start-menu'> Start</button>
 
                 
                 <div className='taskbar-icon-holder'>
@@ -55,6 +60,7 @@ function Taskbar({ windows }: Props) {
                 <div className='time-group'>Time | Weather | etc. </div>
             </div>
         </div>
+        
     )
 }
 

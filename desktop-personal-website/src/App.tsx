@@ -16,16 +16,23 @@ function App() {
   const [windows, setWindows] = useState<WindowType[]>([])
   const [topZ, setTopZ] = useState(0)
 
+  const [showLoginPage, setShowLoginPage] = useState(true)
+
   return (
     <div className='main-container'>
-      <Login/>
+
+
+
+      <Login show={showLoginPage} setShowLoginPage={setShowLoginPage}/> 
+
       <Desktop
         windows={windows}
         setWindows={setWindows}
         topZ={topZ}
         setTopZ={setTopZ}
       />
-      <Taskbar windows={windows}/>
+      <Taskbar setShowLoginPage={setShowLoginPage} windows={windows}/>
+      
     </div>
   )
 }
