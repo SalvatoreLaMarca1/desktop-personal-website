@@ -2,6 +2,7 @@ import { useState } from "react";
 import AppIcon from "./AppIcon"
 import Email from "./Email";
 import AppWindow from "./AppWindow";
+import Chess from "./Chess";
 
 
 type WindowType = {
@@ -76,6 +77,17 @@ function Desktop({ windows, setWindows, topZ, setTopZ}: desktopProps) {
                 
             />
 
+            <AppIcon
+                name="Chess"
+                selected={selectedIcon === "Chess"}
+                onSelect={() => setSelectedIcon("Chess")}
+                icon="src/assets/app-icons/chess.jpg"
+                onDoubleClick={(e) => {
+                    e.stopPropagation();
+                    openWindow("chess")
+                }}
+            />
+
 
             {windows.map(win => {
                 const isEmail = win.id.startsWith("email");
@@ -89,6 +101,7 @@ function Desktop({ windows, setWindows, topZ, setTopZ}: desktopProps) {
                             height={isEmail ? 400 : undefined}
                         >
                             {win.id.startsWith("email") && <Email/>}
+                            {win.id.startsWith("chess") && <Chess/>}
                         </AppWindow>
                     )
                 }

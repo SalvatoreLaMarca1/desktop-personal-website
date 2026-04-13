@@ -20,11 +20,16 @@ function Taskbar({ windows, setShowLoginPage }: Props) {
     const appIcons: Record<string, string> = {
         email: "src/assets/app-icons/email.jpg",
         discord: "src/assets/app-icons/discord.png",
+        chess: "src/assets/app-icons/chess.jpg"
         // add more apps here
     };
 
     const [showOptions, setShowOptions] = useState(false);
 
+    function logOut() {
+        setShowLoginPage(true)
+        setShowOptions(false)
+    }
 
     return (
 
@@ -34,13 +39,13 @@ function Taskbar({ windows, setShowLoginPage }: Props) {
 
             {showOptions ? 
                 <div className='taskbar-options'>
-                    <button onClick={() => setShowLoginPage(true)}>Log out</button>
+                    <button onClick={logOut}>Log out</button>
                 </div> : 
                 <></>
             }
 
             <div className="taskbar">
-                <button onClick={() => setShowOptions(!showOptions)} className='start-menu'> Start</button>
+                <button onClick={() => setShowOptions(!showOptions)} className='start-menu'> <i className="bi bi-box-seam-fill"></i></button>
 
                 
                 <div className='taskbar-icon-holder'>

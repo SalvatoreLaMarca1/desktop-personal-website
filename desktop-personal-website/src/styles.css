@@ -56,9 +56,17 @@
 }
 
 .start-menu {
-    background-color: green;
-    width: 100px;
+    background-color: rgb(36, 61, 61);
+    width: 50px;
     height: 30px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.start-menu:active {
+    background-color: darkslategray;
 }
 
 .time-group {
@@ -116,11 +124,15 @@
 .app-window {
     /* width: 500px;
     height: 400px; */
-    background-color: lightblue;
+    background-color: rgb(58, 58, 58);
     display: flex;
     flex-direction: column;
     border-radius: 15px;
     position: absolute;
+    width: fit-content;
+    height: fit-content;
+    min-width: 400px;
+    min-height: 500px;
 }
 
 .app-header {
@@ -217,22 +229,25 @@ h2 {
 .taskbar-options {
     height: 500px;
     width: 450px;
-    background-color: green;
+    background-color: gray;
     position: absolute;
     bottom: 40px;
+    border-top-right-radius: 15px;
     z-index: 999;
 }
 
 .login-page {
-    background-color: gray;
+    /* background-color: rgba(122, 122, 122, 0.94); */
+    background-color: rgb(218, 190, 154, 0.94);
+    /* background-color: rgb(245, 222, 179, 0.94); */
     width: 100%;
     height: 100vh;
     position: fixed;
     z-index: 1000;
-    justify-content: center;
     align-items: center;
     display: flex;
-
+    flex-direction: column;
+    justify-content: center;
     transform: translateY(0);
     transition: transform 0.5s ease;
 }
@@ -247,13 +262,15 @@ h2 {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    margin-top: auto;
+    margin-bottom: 50px;
 }
 
 .profile-pic {
     border-radius: 50%;
-    height: 250px;
-    width: 250px;
-    border-width: 2px;
+    height: 80px;
+    width: 80px;
+    border-width: 1px;
     border-style: solid;
     border-color: black;
     background-position: center;
@@ -262,7 +279,7 @@ h2 {
 
 .profile-pic-img {
     border-radius: 50%;
-    width: 250px;
+    width: 80px;
 }
 
 
@@ -276,4 +293,23 @@ h2 {
 
 .login-pass:active {
     border: none;
+}
+
+
+.login-time {
+    font-size: 100px;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+.date-time {
+    height: min-content;
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-date {
+    font-size: 40px;
+    color: white;
 }

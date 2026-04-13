@@ -12,7 +12,7 @@ type AppWindowProps = {
 }
 
 
-function AppWindow({children, onClick, onClose, zIndex = 0, width = 500, height = 400}: AppWindowProps) {
+function AppWindow({children, onClick, onClose, zIndex = 0, width, height}: AppWindowProps) {
 
     const nodeRef = useRef(null)
 
