@@ -6,11 +6,9 @@ import Desktop from './Desktop.tsx'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useState } from 'react';
 import Login from './Login.tsx';
+import type { WindowType } from "./Desktop.tsx"
 
-export type WindowType = {
-  id: string;
-  zIndex: number;
-}
+
 
 function App() {
   const [windows, setWindows] = useState<WindowType[]>([])

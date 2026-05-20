@@ -13,7 +13,8 @@
     "bootstrap-icons": "^1.13.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-draggable": "^4.5.0"
+    "react-draggable": "^4.5.0",
+    "react-rnd": "^10.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -304,8 +304,9 @@ h2 {
 
 .date-time {
     height: min-content;
-    margin-top: 300px;
+    margin-top: 200px;
     display: flex;
+    gap: 20px;
     flex-direction: column;
 }
 

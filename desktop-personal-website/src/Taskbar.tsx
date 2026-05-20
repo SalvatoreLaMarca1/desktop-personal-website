@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import './styles.css'
-
-type WindowType = {
-    id: string;
-    zIndex: number;
-}
+import type { WindowType } from './Desktop';
 
 type Props = {
     windows: WindowType[];
@@ -14,7 +10,7 @@ type Props = {
 function Taskbar({ windows, setShowLoginPage }: Props) {
 
     const apps = Array.from(
-        new Set(windows.map(w => w.id.split("-")[0]))
+        new Set(windows.map(w => w.appId.split("-")[0]))
     );
 
     const appIcons: Record<string, string> = {

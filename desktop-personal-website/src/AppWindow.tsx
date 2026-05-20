@@ -1,40 +1,66 @@
-import { useRef } from "react"
-import Draggable from "react-draggable"
+import { Rnd } from "react-rnd";
 
 type AppWindowProps = {
-    width?: number | string;
-    height?: number | string;
+    width?: number;
+    height?: number;
     zIndex?: number;
     onClick?: () => void;
-    text?: string
     children?: React.ReactNode;
     onClose?: () => void;
-}
+};
 
-
-function AppWindow({children, onClick, onClose, zIndex = 0, width, height}: AppWindowProps) {
-
-    const nodeRef = useRef(null)
+function AppWindow({
+    children,
+    onClick,
+    onClose,
+    zIndex = 0,
+    width = 500,
+    height = 300,
+}: AppWindowProps) {
 
     return (
-        <Draggable onMouseDown={onClick}  handle=".app-header" nodeRef={nodeRef}>
-            <div ref = {nodeRef} className="app-window"
-                
-                style={{
-                    width: typeof width === "number" ? `${width}px` : width,
-                    height: typeof height === "number" ? `${height}px` : height,
-                    zIndex: zIndex
-                }}>
+        <Rnd
+            default={{
+                x: 100,
+                y: 100,
+                width,
+                height,
+            }}
+            minWidth={250}
+            minHeight={150}
+            bounds="window"
+            dragHandleClassName="app-header"
+            style={{
+                zIndex,
+            }}
+        >
+            <div
+                className="app-window h-full flex flex-col"
+                onMouseDown={(e) => {
+                    e.stopPropagation();
+                    onClick?.();
+                }}
+            >
+
                 <div className="app-header">
-                    <button onClick={onClose} className="app-window-button close-button three-button"></button>
-                    <button className="app-window-button min-button three-button"></button>
-                    <button className="app-window-button max-button three-button"></button>
+
+                    <button
+                        onClick={onClose}
+                        className="app-window-button close-button three-button"
+                    />
+
+                    <button className="app-window-button min-button three-button" />
+
+                    <button className="app-window-button max-button three-button" />
                 </div>
 
-                {children}
+                <div className="flex-1 overflow-auto">
+                    {children}
+                </div>
+
             </div>
-        </Draggable>
-    )
+        </Rnd>
+    );
 }
 
-export default AppWindow
+export default AppWindow;
